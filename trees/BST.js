@@ -68,6 +68,17 @@ class BST {
         this.inorder(node.right);
     }
 
+    height(node) {
+        if(!node) {
+            return 0;
+        }
+
+        var leftHeight = this.height(node.left);
+        var rightHeight = this.height(node.right);
+        
+        return Math.max(1 + leftHeight, 1 +rightHeight);
+    }
+
     remove(data) {
         
         const removeNode = function(node, data) {
@@ -128,6 +139,8 @@ class BST {
 
 
 }
+
+module.exports = BST;
 var bst = new BST();
 
 bst.addNode(15); 
@@ -143,6 +156,6 @@ bst.addNode(27);
 bst.remove(15)
 
 //bst.traverse(bst.root);
-bst.inorder(bst.root);
+// bst.inorder(bst.root);
 
 //console.log(JSON.stringify(bst));
