@@ -21,6 +21,32 @@ class BST {
         
     }
 
+    sum_child(node=this.root) {
+        if(!node) {
+            return 0;
+        }
+
+        if(!node.right && !node.left) {
+            return node.data;
+        }
+
+        if(node.left && !node.right) {
+            node.data = node.data + this.sum_child(node.left);
+            return node.data;
+        }
+
+        if(node.right && !node.left) {
+            node.data = node.data + this.sum_child(node.right);
+            return node.data;
+        }
+
+        if(node.left && node.right) {
+            node.data = node.data + this.sum_child(node.right) + this.sum_child(node.left);
+            return node.data;
+        }
+
+        
+    }
     max() {
         var node = this.root;
         while(node.right) {
@@ -61,7 +87,7 @@ class BST {
 
     }
 
-    inorder(node) {
+    inorder(node = this.root) {
         if(!node) return;
         this.inorder(node.left);
         console.log(node.data);
