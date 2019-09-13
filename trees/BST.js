@@ -44,8 +44,6 @@ class BST {
             node.data = node.data + this.sum_child(node.right) + this.sum_child(node.left);
             return node.data;
         }
-
-        
     }
     max() {
         var node = this.root;
