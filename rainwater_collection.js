@@ -1,5 +1,5 @@
 
-const bricks = [1,2,3,4,3,2,1];
+const bricks = [5,0,0,0,1,2,5];
 
 function get_rain_water(start_index = 0) {
 
@@ -14,6 +14,7 @@ function get_rain_water(start_index = 0) {
     if(start_index === right_max_index) {
         right_max_index = find_right_max(start_index + 1, bricks)[1];
         start_height = bricks[right_max_index];
+        
     }
 
     //compute the area.
@@ -28,11 +29,10 @@ function get_rain_water(start_index = 0) {
         middleArea += bricks[i];
         completeArea += start_height;
     }
+
     let temp =  (completeArea - (middleArea + start_height * 2));
-    
     return temp + get_rain_water(right_max_index);
     
-
 }
 
 
